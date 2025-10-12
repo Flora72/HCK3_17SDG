@@ -16,10 +16,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views # Import all auth views
+from AgroMatch import views 
 
 
-
-urlpatterns = [
+urlpatterns =[
     path('admin/', admin.site.urls),
+    
+    # === Authentication URLs (using Django's built-in views) ===
+    # 1. Login
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    
+    # 2. Logout
+    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
+    
+    # 3. Signup (Points to the new custom view you MUST implement below)
+    path('accounts/signup/', views.signup_view, name='signup'), # Points to the new view function
+    
+    # === Main Application URLs ===
+    # Include the URLs from your main app (AgroMatch)
     path('', include('AgroMatch.urls')),
 ]

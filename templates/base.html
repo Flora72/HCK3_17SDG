@@ -14,14 +14,22 @@
       <a href="{% url 'home' %}" class="text-xl font-bold text-green-800">AgroMatch</a>
     </div>
     <div class="flex-none gap-4">
-        <a href="{% url 'home' %}" class="btn btn-sm btn-outline">Home</a>
-      <a href="{% url 'agro_form' %}" class="btn btn-sm btn-success">Get Recommendations</a>
-      <label class="swap swap-rotate">
-        <input type="checkbox" onclick="toggleTheme()" />
-        <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64 17.64A9 9 0 0112 3v0a9 9 0 000 18v0a9 9 0 01-6.36-3.36z"/></svg>
-        <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a1 1 0 011 1v2a1 1 0 01-2 0V3a1 1 0 011-1z"/></svg>
-      </label>
-    </div>
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}" class="inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm btn-outline btn-error">Logout</button>
+    </form>
+{% else %}
+    <a href="{% url 'login' %}" class="btn btn-sm btn-outline">Log In</a>
+    <a href="{% url 'signup' %}" class="btn btn-sm btn-success">Sign Up</a>
+{% endif %}
+    
+    <a href="{% url 'home' %}" class="btn btn-sm btn-outline">Home</a>
+    <a href="{% url 'agro_form' %}" class="btn btn-sm btn-success">Get Recommendations</a>
+
+    <label class="swap swap-rotate">
+    </label>
+</div>
   </div>
 
   <!-- 🌱 Main Content -->

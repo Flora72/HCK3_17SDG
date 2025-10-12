@@ -124,3 +124,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# === AUTHENTICATION REDIRECT SETTINGS  ===
+# ====================================================================
+
+# The URL name to redirect to after a user successfully logs in
+# This MUST match the name in AgroMatch/urls.py, which is 'home'
+
+
+# The URL name for the login page (used by @login_required decorator)
+LOGIN_URL = 'login'
+
+# The URL name to redirect to after logout
+LOGOUT_REDIRECT_URL = 'login' 
