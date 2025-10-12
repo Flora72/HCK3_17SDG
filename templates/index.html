@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <title>AgroMatch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.0/dist/full.css" rel="stylesheet" />
+</head>
+<body class="transition-all duration-300 bg-green-50">
+
+  <!-- Navbar -->
+  <div class="navbar bg-white/30 backdrop-blur-md shadow-md px-6 fixed top-0 left-0 right-0 z-50">
+    <div class="flex-1">
+      <a class="text-xl font-bold text-green-800">AgroMatch</a>
+    </div>
+    <div class="flex-none gap-4">
+      <a href="{% url 'home' %}" class="btn btn-sm btn-outline">Home</a>
+      <a href="{% url 'agro_form' %}" class="btn btn-sm btn-success">Get Recommendations</a>
+      <label class="swap swap-rotate">
+        <input type="checkbox" onclick="toggleTheme()" />
+        <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64 17.64A9 9 0 0112 3v0a9 9 0 000 18v0a9 9 0 01-6.36-3.36z"/></svg>
+        <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a1 1 0 011 1v2a1 1 0 01-2 0V3a1 1 0 011-1z"/></svg>
+      </label>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center bg-black">
+   <img src="https://graduatefarmer.co.ke/wp-content/uploads/2016/03/youth-farmers-in-Kenya.jpg"
+     alt="Youth farmers in Kenya"
+     class="absolute inset-0 w-full h-full object-cover opacity-60" />
+
+
+    <div class="relative z-10 text-center backdrop-blur-md bg-white/30 rounded-xl shadow-lg p-8 max-w-3xl mx-4 mt-20">
+      <h1 class="text-5xl font-bold text-white mb-4 drop-shadow-lg">Welcome to AgroMatch </h1>
+      <p class="text-lg text-white mb-6 drop-shadow-md">
+        We help farmers choose crops and practices that thrive in their soil and climate.
+        One seed at a time — with care, clarity, and community.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a href="{% url 'agro_form' %}" class="btn btn-success">Get Recommendations</a>
+        <a href="#" class="btn btn-outline text-white border-white">About AgroMatch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards Section -->
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6 py-12 bg-green-50">
+    <div class="card bg-white shadow-md border border-green-200 hover:shadow-lg transition">
+      <div class="card-body">
+        <h2 class="card-title text-green-800">SDG Aligned</h2>
+        <p>AgroMatch supports SDG 2 (Zero Hunger) and SDG 13 (Climate Action) through smart recommendations.</p>
+      </div>
+    </div>
+    <div class="card bg-white shadow-md border border-green-200 hover:shadow-lg transition">
+      <div class="card-body">
+        <h2 class="card-title text-green-800">Emotionally Grounded</h2>
+        <p>Messages are crafted with care to empower farmers and honor their lived realities.</p>
+      </div>
+    </div>
+    <div class="card bg-white shadow-md border border-green-200 hover:shadow-lg transition">
+      <div class="card-body">
+        <h2 class="card-title text-green-800">Built for Kenya</h2>
+        <p>Designed with local soil types, rainfall patterns, and SMS delivery in mind.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark Mode Script -->
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      html.setAttribute("data-theme", current === "light" ? "dark" : "light");
+    }
+  </script>
+
+  <!--  Footer -->
+  <footer class="bg-green-900 text-white py-6 px-4 text-center">
+    <p class="text-sm mb-2">AgroMatch &copy; 2025 </p>
+    <p class="text-xs">Aligned with <strong>SDG 2</strong> and <strong>SDG 13</strong> • Powered by Django & Africa’s Talking</p>
+  </footer>
+
+</body>
+</html>
