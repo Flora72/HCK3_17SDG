@@ -1,27 +1,40 @@
 
-from django.shortcuts import render, redirect # Import redirect for signup
-from django.contrib.auth.decorators import login_required # IMPORT THIS
-from django.contrib.auth.forms import UserCreationForm # IMPORT THIS for signup
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from .forms import AgroForm
 from .utils import recommend_crop
 from .messaging import generate_message
+from django.contrib.auth import login
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout
+
 
 def signup_view(request):
-    """Handles user registration using Django's built-in form."""
     if request.method == 'POST':
-        # Use the built-in form for simplicity
         form = UserCreationForm(request.POST) 
         if form.is_valid():
             form.save()
-            # Redirect to login page after successful registration
             return redirect('login') 
     else:
         form = UserCreationForm()
-        
-    # Pass the form to the signup.html template
     return render(request, 'signup.html', {'form': form})
 
-@login_required
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('agro_form')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
 def home_view(request):
     return render(request, 'index.html')
 

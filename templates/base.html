@@ -8,48 +8,36 @@
 </head>
 <body class="bg-amber-50 text-gray-800 transition-all duration-300">
 
-  <!-- 🌿 Navbar -->
-  <div class="navbar bg-white/30 backdrop-blur-md shadow-md px-6 py-2 fixed top-0 left-0 right-0 z-50">
-    <div class="flex-1">
-      <a href="{% url 'home' %}" class="text-xl font-bold text-green-800">AgroMatch</a>
-    </div>
-    <div class="flex-none gap-4">
+<!-- Navbar -->
+<div class="navbar bg-white/30 backdrop-blur-md shadow-md px-6 py-2 fixed top-0 left-0 right-0 z-50">
+  <div class="flex-1">
+    <a href="{% url 'home' %}" class="text-xl font-bold text-green-800">AgroMatch</a>
+  </div>
+  <div class="flex-none gap-2 items-center">
     {% if user.is_authenticated %}
-    <form method="post" action="{% url 'logout' %}" class="inline">
+      <form method="post" action="{% url 'logout' %}" class="inline">
         {% csrf_token %}
         <button type="submit" class="btn btn-sm btn-outline btn-error">Logout</button>
-    </form>
-{% else %}
-    <a href="{% url 'login' %}" class="btn btn-sm btn-outline">Log In</a>
-    <a href="{% url 'signup' %}" class="btn btn-sm btn-success">Sign Up</a>
-{% endif %}
-    
+      </form>
+    {% else %}
+      <a href="{% url 'login' %}" class="btn btn-sm btn-outline">Log In</a>
+      <a href="{% url 'signup' %}" class="btn btn-sm btn-success">Sign Up</a>
+    {% endif %}
     <a href="{% url 'home' %}" class="btn btn-sm btn-outline">Home</a>
     <a href="{% url 'agro_form' %}" class="btn btn-sm btn-success">Get Recommendations</a>
-
-    <label class="swap swap-rotate">
-    </label>
-</div>
   </div>
+</div>
 
-  <!-- 🌱 Main Content -->
+  <!-- Main Content -->
   <main class="pt-24 pb-12 px-4 container mx-auto">
     {% block content %}{% endblock %}
   </main>
 
-  <!-- 🌙 Dark Mode Script -->
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute("data-theme");
-      html.setAttribute("data-theme", current === "light" ? "dark" : "light");
-    }
-  </script>
 
-  <!-- 🧡 Footer -->
+  <!-- Footer -->
   <footer class="bg-green-900 text-white py-6 px-4 text-center">
-    <p class="text-sm mb-2">AgroMatch © 2025 — Built with care in Kiambu, Kenya</p>
-    <p class="text-xs">Empowering farmers with clarity, care, and climate-smart choices 🌾</p>
+    <p class="text-sm mb-2">AgroMatch © 2025 Kenya</p>
+    <p class="text-xs">Empowering farmers with clarity, care, and climate-smart choices </p>
   </footer>
 
 </body>

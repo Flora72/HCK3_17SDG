@@ -9,20 +9,25 @@
 <body class="transition-all duration-300 bg-green-50">
 
   <!-- Navbar -->
-  <div class="navbar bg-white/30 backdrop-blur-md shadow-md px-6 fixed top-0 left-0 right-0 z-50">
-    <div class="flex-1">
-      <a class="text-xl font-bold text-green-800">AgroMatch</a>
-    </div>
-    <div class="flex-none gap-4">
-      <a href="{% url 'home' %}" class="btn btn-sm btn-outline">Home</a>
-      <a href="{% url 'agro_form' %}" class="btn btn-sm btn-success">Get Recommendations</a>
-      <label class="swap swap-rotate">
-        <input type="checkbox" onclick="toggleTheme()" />
-        <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64 17.64A9 9 0 0112 3v0a9 9 0 000 18v0a9 9 0 01-6.36-3.36z"/></svg>
-        <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a1 1 0 011 1v2a1 1 0 01-2 0V3a1 1 0 011-1z"/></svg>
-      </label>
-    </div>
+<div class="navbar bg-white/30 backdrop-blur-md shadow-md px-6 py-2 fixed top-0 left-0 right-0 z-50">
+  <div class="flex-1">
+    <a href="{% url 'home' %}" class="text-xl font-bold text-green-800">AgroMatch</a>
   </div>
+  <div class="flex-none gap-2 items-center">
+    {% if user.is_authenticated %}
+      <form method="post" action="{% url 'logout' %}" class="inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm btn-outline btn-error">Logout</button>
+      </form>
+    {% else %}
+      <a href="{% url 'login' %}" class="btn btn-sm btn-outline">Log In</a>
+      <a href="{% url 'signup' %}" class="btn btn-sm btn-success">Sign Up</a>
+    {% endif %}
+    <a href="{% url 'home' %}" class="btn btn-sm btn-outline">Home</a>
+    <a href="{% url 'agro_form' %}" class="btn btn-sm btn-success">Get Recommendations</a>
+  </div>
+</div>
+
 
   <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center justify-center bg-black">
@@ -66,19 +71,11 @@
     </div>
   </section>
 
-  <!-- Dark Mode Script -->
-  <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      const current = html.getAttribute("data-theme");
-      html.setAttribute("data-theme", current === "light" ? "dark" : "light");
-    }
-  </script>
 
   <!--  Footer -->
   <footer class="bg-green-900 text-white py-6 px-4 text-center">
     <p class="text-sm mb-2">AgroMatch &copy; 2025 </p>
-    <p class="text-xs">Aligned with <strong>SDG 2</strong> and <strong>SDG 13</strong> • Powered by Django & Africa’s Talking</p>
+    <p class="text-xs">Empowering farmers with clarity, care, and climate-smart choices </p>
   </footer>
 
 </body>
