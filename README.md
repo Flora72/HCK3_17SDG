@@ -1,6 +1,6 @@
 # 🌾 AgroMatch 
 
-**AgroMatch** is a web-based platform built to empower farmers with personalized, climate-resilient crop recommendations. Designed for the **HCK3_17SDG Hackathon**, it blends data-driven logic with a clean, accessible interface to support sustainable agriculture in Kenya and beyond.
+**AgroMatch** is a web-based platform built to empower farmers with personalized, climate-resilient crop recommendations. Designed for the **Land SDG Hackathon**, it blends data-driven logic with a clean, accessible interface to support sustainable agriculture in Kenya and beyond.
 
 ---
 
@@ -16,6 +16,9 @@
 - **Solution:**  
   A crop recommendation engine that adapts to soil, climate, and region — delivered through a user-friendly web app
 
+## 🚀 Live Demo
+
+[click here to access the live demo](https://agromatch-iyw0.onrender.com/)
 ---
 
 ## 🚀 Features
