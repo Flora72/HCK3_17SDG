@@ -40,7 +40,7 @@
 | Backend       | Django, Python           |
 | Frontend      | HTML, Tailwind CSS, DaisyUI |
 | Auth & Routing| Django Auth, URLconf     |
-| Deployment    | *(Add your method: e.g., Heroku, Render)* |
+| Deployment    | Render |
 
 ---
 
